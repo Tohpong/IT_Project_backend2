@@ -1,0 +1,30 @@
+version: "3.8"
+services:
+  db:
+    image: mysql:8.0
+    container_name: mysql_trainer
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword   # รหัสผ่าน root
+      MYSQL_DATABASE: Trainer             # ให้สร้าง DB Trainer อัตโนมัติ
+      MYSQL_USER: trainer_user            # user สำหรับใช้งาน
+      MYSQL_PASSWORD: trainer_pass        # password ของ user
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./Trainer.sql:/docker-entrypoint-initdb.d/Trainer.sql:ro
+      - db_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: phpmyadmin_trainer
+    restart: always
+    environment:
+      PMA_HOST: db
+      PMA_USER: trainer_user
+      PMA_PASSWORD: trainer_pass
+    ports:
+      - "8080:80"
+
+volumes:
+  db_data:
