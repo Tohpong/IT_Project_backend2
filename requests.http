@@ -1,0 +1,41 @@
+### Health
+GET http://localhost:8000/
+
+
+### Accounts
+GET http://localhost:8000/api/accounts
+GET http://localhost:8000/api/accounts/1
+POST http://localhost:8000/api/accounts
+Content-Type: application/json
+
+
+{
+"account_id": 3,
+"username": "alice",
+"password": "secret"
+}
+
+
+### Members
+GET http://localhost:8000/api/members
+POST http://localhost:8000/api/members
+Content-Type: application/json
+
+
+{
+"member_id": 2,
+"full_name": "John Doe",
+"age": 25,
+"phone": "0800000000",
+"birthdate": "2000-01-01",
+"gender": "Male",
+"account_id": 3
+}
+
+
+### Courses
+GET http://localhost:8000/api/courses
+
+
+### Trainers
+GET http://localhost:8000/api/trainers
